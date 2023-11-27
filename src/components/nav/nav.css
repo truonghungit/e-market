@@ -1,0 +1,23 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown .dropdown-menu {
+  position: absolute;
+}
+
+.dropdown-menu li:hover a {
+  color: black;
+}
+
+.nav-item > a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-item > a:hover {
+  color: #fff;
+}

@@ -1,0 +1,9 @@
+.image-box .quick-view-button {
+  height: 34px;
+  transform: translateY(34px);
+  transition: all ease-in-out 300ms;
+}
+
+.product-item:hover .quick-view-button {
+  transform: translateY(0);
+}
