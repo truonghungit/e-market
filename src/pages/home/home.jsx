@@ -1,5 +1,6 @@
 import appConfig from "../../configs";
 
+import { useShoppingCart } from "../../shopping-cart";
 import { ProductItem } from "../../components/product-item";
 import {
   useGetProductsByCategory,
@@ -26,18 +27,20 @@ const SectionTitle = ({ title }) => {
 };
 
 export const HomePage = () => {
+  const { addProduct } = useShoppingCart();
+
   const { data: listPCForGaming } = useGetProductsByCategory({
-    category: "gaming",
+    category: "bo-may-tinh-choi-game",
     pageSize: 4,
   });
 
   const { data: listPCForOffice } = useGetProductsByCategory({
-    category: "office",
+    category: "pc-van-phong-game-nhe",
     pageSize: 4,
   });
 
   const { data: monitors } = useGetProductsByCategory({
-    category: "monitor",
+    category: "man-hinh-may-tinh",
     pageSize: 4,
   });
 
@@ -52,7 +55,9 @@ export const HomePage = () => {
               <div
                 key={index}
                 className={
-                  index === 0 ? "col-span-1 lg:col-span-3 h-auto lg:h-[432px] overflow-hidden" : ""
+                  index === 0
+                    ? "col-span-1 lg:col-span-3 h-auto lg:h-[432px] overflow-hidden"
+                    : ""
                 }
               >
                 <img className="" src={image} alt="" />
@@ -78,7 +83,11 @@ export const HomePage = () => {
             <SectionTitle title="Bộ máy tính chơi game" />
             <div className="grid auto-rows-auto grid-cols-4 gap-x-5 gap-y-8">
               {listPCForGaming.map((product) => (
-                <ProductItem {...product} key={product.id} />
+                <ProductItem
+                  {...product}
+                  key={product.id}
+                  onAddToCart={(quantity) => addProduct({ quantity, product })}
+                />
               ))}
             </div>
           </section>
@@ -89,7 +98,11 @@ export const HomePage = () => {
             <SectionTitle title="PC Văn phòng" />
             <div className="grid auto-rows-auto grid-cols-4 gap-x-5 gap-y-8">
               {listPCForOffice.map((product) => (
-                <ProductItem {...product} key={product.id} />
+                <ProductItem
+                  {...product}
+                  key={product.id}
+                  onAddToCart={(quantity) => addProduct({ quantity, product })}
+                />
               ))}
             </div>
           </section>
@@ -100,7 +113,11 @@ export const HomePage = () => {
             <SectionTitle title="Màn hình máy tính" />
             <div className="grid auto-rows-auto grid-cols-4 gap-x-5 gap-y-8">
               {monitors.map((product) => (
-                <ProductItem {...product} key={product.id} />
+                <ProductItem
+                  {...product}
+                  key={product.id}
+                  onAddToCart={(quantity) => addProduct({ quantity, product })}
+                />
               ))}
             </div>
           </section>
@@ -111,7 +128,11 @@ export const HomePage = () => {
             <SectionTitle title="Sản phầm mới nhất" />
             <div className="grid auto-rows-auto grid-cols-4 gap-x-5 gap-y-8">
               {newProducts.map((product) => (
-                <ProductItem {...product} key={product.id} />
+                <ProductItem
+                  {...product}
+                  key={product.id}
+                  onAddToCart={(quantity) => addProduct({ quantity, product })}
+                />
               ))}
             </div>
           </section>

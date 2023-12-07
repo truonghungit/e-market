@@ -1,23 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const QuantityInput = ({ min = 0, max = Number.MAX_SAFE_INTEGER }) => {
-  const [value, setValue] = useState(0);
+export const QuantityInput = ({
+  min = 1,
+  max = Number.MAX_SAFE_INTEGER,
+  onChange,
+  ...props
+}) => {
+  const [value, setValue] = useState(props.value ?? 1);
 
   const decrease = () => {
     if (value <= min) {
-      return setValue(min);
+      setValue(min);
+    } else {
+      setValue(value - 1);
     }
-
-    return setValue(value - 1);
   };
 
   const increase = () => {
     if (value >= max) {
-      return setValue(max);
+      setValue(max);
+    } else {
+      setValue(value + 1);
     }
-
-    return setValue(value + 1);
   };
+
+  useEffect(() => {
+    onChange(value);
+  }, [value, onChange]);
 
   return (
     <div className="relative flex items-center max-w-[8rem]">

@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 
 import "./product-item.css";
 
+import { formatNumber } from "../../utils/format";
 import { QuantityInput } from "../input/quantity-input";
 
 export const ProductItem = ({
+  onAddToCart,
   name,
   price,
   category,
@@ -14,6 +16,7 @@ export const ProductItem = ({
   imageUrl,
   shortDescription = "",
 }) => {
+  const [quantity, setQuantity] = useState(1);
   let [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => {
@@ -26,6 +29,8 @@ export const ProductItem = ({
 
   const addProductToCart = () => {
     closeModal();
+
+    onAddToCart && onAddToCart(quantity);
   };
 
   return (
@@ -33,7 +38,7 @@ export const ProductItem = ({
       <div className="w-full product-item">
         <div className="relative overflow-hidden image-box">
           <div className="">
-            <Link to={"product/" + slug}>
+            <Link to={"/product/" + slug}>
               <img className="w-full max-w-full" src={imageUrl} alt={name} />
             </Link>
           </div>
@@ -53,12 +58,11 @@ export const ProductItem = ({
               {category}
             </div>
             <div className="text-sm text-neutral-800">
-              <Link to={"product/" + slug}>{name}</Link>
+              <Link to={"/product/" + slug}>{name}</Link>
             </div>
           </div>
           <div className="text-sm text-neutral-900 font-semibold">
-            <span>{price}</span>
-            <span className="">₫</span>
+            <span>{formatNumber(price)}</span>
           </div>
         </div>
       </div>
@@ -105,8 +109,7 @@ export const ProductItem = ({
                       <div className="mt-3 mb-4 h-[3px] w-8 bg-neutral-200"></div>
 
                       <div className="text-xl text-neutral-900 font-bold mb-2">
-                        <span>{price}</span>
-                        <span className="">₫</span>
+                        <span>{formatNumber(price)}</span>
                       </div>
 
                       <div
@@ -114,7 +117,10 @@ export const ProductItem = ({
                       ></div>
 
                       <div className="mt-6 flex gap-4">
-                        <QuantityInput />
+                        <QuantityInput
+                          value={quantity}
+                          onChange={setQuantity}
+                        />
 
                         <button
                           onClick={addProductToCart}
