@@ -13,6 +13,7 @@ import { ReturnPolicyPage } from "./pages/return-policy";
 import { ShopPage } from "./pages/shop";
 import { ProductItemDetails } from "./pages/product-item-details";
 import { ShoppingCartPage } from "./pages/shopping-cart";
+import { CheckoutPage } from "./pages/checkout";
 
 import "react-range-slider-input/dist/style.css";
 import "./App.css";
@@ -35,10 +36,8 @@ function App() {
             element={<ReturnPolicyPage />}
           />
           <Route path="product/:slug" element={<ProductItemDetails />} />
-          <Route path="cart" element={<ShoppingCartPage />}>
-            <Route path="" element={<ShoppingCartPage />} />
-            <Route path="checkout" element={<ShoppingCartPage />} />
-          </Route>
+          <Route path="cart" element={<ShoppingCartPage />} />
+          <Route path="checkout" element={<CheckoutPage />} />
         </Route>
       </Routes>
     </ShoppingCartProvider>

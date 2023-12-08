@@ -47,7 +47,7 @@ export const HomePage = () => {
   const { data: newProducts } = useGetNewProducts({ pageSize: 8 });
 
   return (
-    <div className="py-8">
+    <div className="pt-4 pb-8">
       <div className="container">
         <div className="">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -56,11 +56,20 @@ export const HomePage = () => {
                 key={index}
                 className={
                   index === 0
-                    ? "col-span-1 lg:col-span-3 h-auto lg:h-[432px] overflow-hidden"
+                    ? "col-span-1 lg:col-span-3 h-auto lg:h-[412px] overflow-hidden"
                     : ""
                 }
               >
-                <img className="" src={image} alt="" />
+                {index === 0 ? (
+                  <div
+                    className="w-full h-full bg-cover bg-center "
+                    style={{
+                      backgroundImage: `url(${image})`,
+                    }}
+                  ></div>
+                ) : (
+                  <img src={image} alt="" />
+                )}
               </div>
             ))}
           </div>
@@ -81,7 +90,7 @@ export const HomePage = () => {
         {listPCForGaming && (
           <section className="py-8">
             <SectionTitle title="Bộ máy tính chơi game" />
-            <div className="grid auto-rows-auto grid-cols-4 gap-x-5 gap-y-8">
+            <div className="grid auto-rows-auto grid-cols-2 xl:grid-cols-4 gap-x-5 gap-y-8">
               {listPCForGaming.map((product) => (
                 <ProductItem
                   {...product}
@@ -96,7 +105,7 @@ export const HomePage = () => {
         {listPCForOffice && (
           <section className="py-8">
             <SectionTitle title="PC Văn phòng" />
-            <div className="grid auto-rows-auto grid-cols-4 gap-x-5 gap-y-8">
+            <div className="grid auto-rows-auto grid-cols-2  xl:grid-cols-4 gap-x-5 gap-y-8">
               {listPCForOffice.map((product) => (
                 <ProductItem
                   {...product}
@@ -111,7 +120,7 @@ export const HomePage = () => {
         {monitors && (
           <section className="py-8">
             <SectionTitle title="Màn hình máy tính" />
-            <div className="grid auto-rows-auto grid-cols-4 gap-x-5 gap-y-8">
+            <div className="grid auto-rows-auto grid-cols-2  xl:grid-cols-4 gap-x-5 gap-y-8">
               {monitors.map((product) => (
                 <ProductItem
                   {...product}
@@ -126,7 +135,7 @@ export const HomePage = () => {
         {newProducts && (
           <section className="py-8">
             <SectionTitle title="Sản phầm mới nhất" />
-            <div className="grid auto-rows-auto grid-cols-4 gap-x-5 gap-y-8">
+            <div className="grid auto-rows-auto grid-cols-2  xl:grid-cols-4 gap-x-5 gap-y-8">
               {newProducts.map((product) => (
                 <ProductItem
                   {...product}

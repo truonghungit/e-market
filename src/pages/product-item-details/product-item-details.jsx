@@ -7,6 +7,7 @@ import {
 } from "../../queries/products.query";
 import { Tabs } from "../tabs";
 
+import { useShoppingCart } from "../../shopping-cart";
 import { formatNumber } from "../../utils/format";
 import { ProductItem } from "../../components/product-item";
 import { QuantityInput } from "../../components/input/quantity-input";
@@ -24,6 +25,7 @@ export const ProductItemDetails = () => {
     setIsOpen(true);
   };
 
+  const { addProduct } = useShoppingCart();
   const [quantity, setQuantity] = useState(1);
   const { data } = useGetProductDetail({ slug: slug });
 
@@ -40,7 +42,9 @@ export const ProductItemDetails = () => {
     return categories.find((item) => item.id === categoryId);
   };
 
-  const addProductToCart = () => {};
+  const addProductToCart = () => {
+    addProduct({ quantity, product });
+  };
 
   if (!product) {
     return <div>No product found</div>;
@@ -83,7 +87,6 @@ export const ProductItemDetails = () => {
               </div>
 
               <div className="flex-shrink-0">
-
                 {previousProduct && (
                   <Link
                     to={"/product/" + previousProduct}
@@ -152,7 +155,13 @@ export const ProductItemDetails = () => {
             {similarProducts && (
               <div className="grid auto-rows-auto grid-cols-4 gap-x-5 gap-y-8">
                 {similarProducts.map((product) => (
-                  <ProductItem {...product} key={product.id} />
+                  <ProductItem
+                    {...product}
+                    key={product.id}
+                    onAddToCart={(quantity) =>
+                      addProduct({ quantity, product })
+                    }
+                  />
                 ))}
               </div>
             )}

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import RangeSlider from "react-range-slider-input";
+import Select from "react-select";
+
+import { useShoppingCart } from "../../shopping-cart";
 import { formatNumber } from "../../utils/format";
 import { ProductItem } from "../../components/product-item";
 import { useGetProductsByCategory } from "../../queries/products.query";
-import Select from "react-select";
 import { ProductCategories } from "./categories";
 
 export const ShopPage = () => {
@@ -13,6 +15,7 @@ export const ShopPage = () => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
   const [prices, setPrices] = useState([0, maxPrice]);
+  const { addProduct } = useShoppingCart();
 
   const { data: products } = useGetProductsByCategory({
     category: category ?? "all",
@@ -65,15 +68,17 @@ export const ShopPage = () => {
   return (
     <div className="py-8">
       <div className="container">
-        <div className="flex justify-between">
+        <div className="flex flex-col xl:flex-row justify-between">
           <div className="uppercase mb-2 text-lg">
             <Link to="/">trang chủ</Link>
             <span> / </span>
             <span className="font-bold">shop</span>
           </div>
           <div className="flex items-center">
-            <span>Hiển thị tất cả {products?.length} kết quả</span>
-            <div className="ml-3 w-64">
+            <span className="hidden xl:inline-block mr-3">
+              Hiển thị tất cả {products?.length} kết quả
+            </span>
+            <div className=" w-64">
               <Select
                 value={selectedFilter}
                 onChange={handleChange}
@@ -87,8 +92,8 @@ export const ShopPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex pt-7">
-          <div className="w-3/12 pr-3">
+        <div className="flex flex-col xl:flex-row pt-7">
+          <div className="w-full xl:w-3/12 pr-3">
             {((priceFilter.min !== null && priceFilter.min !== undefined) ||
               (priceFilter.max !== null && priceFilter.max !== undefined)) && (
               <div className="mb-4">
@@ -165,12 +170,18 @@ export const ShopPage = () => {
               </div>
             </div>
           </div>
-          <div className="w-9/12">
+          <div className="w-full xl:w-9/12">
             <div>
               {products && (
-                <div className="grid auto-rows-auto grid-cols-3 gap-x-5 gap-y-8">
+                <div className="grid auto-rows-auto grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-8">
                   {products.map((product) => (
-                    <ProductItem {...product} key={product.id} />
+                    <ProductItem
+                      {...product}
+                      key={product.id}
+                      onAddToCart={(quantity) =>
+                        addProduct({ quantity, product })
+                      }
+                    />
                   ))}
                 </div>
               )}

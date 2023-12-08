@@ -5,43 +5,56 @@ export const ShoppingCartContext = createContext(null);
 export const ShoppingCartProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
 
-  const [shoppingCart, setShoppingCart] = useState([
-    {
-      id: 12345,
-      product: {
-        id: "g01",
-        name: "CORE I5 10400F | RAM 8G| GTX 1660 SUPER 6G",
-        price: 10000000,
-        category: "bo-may-tinh-choi-game",
-        imageUrl:
-          "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/m4-300x300.jpg",
-        imageDetailUrl:
-          "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/m2.jpg",
-        slug: "core-i5-10400f-ram-16g-rtx-2060-super-8g-likenew-man",
-      },
-      quantity: 5,
-    },
-  ]);
+  const [shoppingCart, setShoppingCart] = useState([]);
 
-  const addProduct = ({ product, quantity }) => {
-    const id = Date.now();
-
-    setShoppingCart([...shoppingCart, { id, product, quantity }]);
-
-    const t = shoppingCart.reduce((preValue, cartItem) => {
+  const calculateTotalAmount = (cart) => {
+    return cart.reduce((preValue, cartItem) => {
       const subTotal = cartItem.product.price * cartItem.quantity;
-
       return preValue + subTotal;
     }, 0);
-    console.log({ product, total: t });
+  };
+
+  const addProduct = ({ product, quantity }) => {
+    const index = shoppingCart.findIndex(
+      (item) => item.product.id === product.id
+    );
+    const id = Date.now();
+    let cart = [...shoppingCart];
+
+    if (index < 0) {
+      cart = [...cart, { id, product, quantity }];
+    } else {
+      cart[index].quantity += quantity;
+    }
+
+    const totalAmount = calculateTotalAmount(cart);
+
+    setShoppingCart(cart);
+    setTotal(totalAmount);
   };
 
   const removeProduct = ({ id }) => {
-    const items = shoppingCart.filter((item) => item.id !== id);
-    setShoppingCart(items);
+    debugger
+    const cart = shoppingCart.filter((item) => item.id !== id);
+
+    const totalAmount = calculateTotalAmount(cart);
+    setShoppingCart(cart);
+    setTotal(totalAmount);
   };
 
-  const updateQuantity = () => {};
+  const updateQuantity = (id, quantity) => {
+    const index = shoppingCart.findIndex((item) => item.id === id);
+    let cart = [...shoppingCart];
+
+    if (index >= 0) {
+      cart[index].quantity = quantity;
+
+      const totalAmount = calculateTotalAmount(cart);
+
+      setShoppingCart(cart);
+      setTotal(totalAmount);
+    }
+  };
 
   return (
     <ShoppingCartContext.Provider
