@@ -14,6 +14,7 @@ import { ShopPage } from "./pages/shop";
 import { ProductItemDetails } from "./pages/product-item-details";
 import { ShoppingCartPage } from "./pages/shopping-cart";
 import { CheckoutPage } from "./pages/checkout";
+import appConfig from "./configs";
 
 import "react-range-slider-input/dist/style.css";
 import "./App.css";
@@ -22,7 +23,7 @@ function App() {
   return (
     <ShoppingCartProvider>
       <Routes>
-        <Route path="/" element={<AppLayout />}>
+        <Route path={appConfig.rootPath} element={<AppLayout />}>
           <Route index element={<HomePage />} />
           <Route path="gioi-thieu" element={<AboutPage />} />
           <Route path="shop" element={<ShopPage />} />

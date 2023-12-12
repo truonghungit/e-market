@@ -13,6 +13,10 @@ import { ProductItem } from "../../components/product-item";
 import { QuantityInput } from "../../components/input/quantity-input";
 import { categories } from "../shop/categories";
 
+import appConfig from "../../configs";
+
+const rootPath = appConfig.rootPath;
+
 export const ProductItemDetails = () => {
   const { slug } = useParams();
   let [isOpen, setIsOpen] = useState(false);
@@ -74,9 +78,9 @@ export const ProductItemDetails = () => {
               <div>
                 <div>
                   <div className="uppercase mb-2 text-neutral-500 text-sm">
-                    <Link to="/">Trang chủ</Link>
+                    <Link to={rootPath}>Trang chủ</Link>
                     <span> / </span>
-                    <Link to={getCategory(product.category)?.link}>
+                    <Link to={`${rootPath}/${getCategory(product.category)?.link}`}>
                       {getCategory(product.category)?.text}
                     </Link>
                   </div>
@@ -89,7 +93,7 @@ export const ProductItemDetails = () => {
               <div className="flex-shrink-0">
                 {previousProduct && (
                   <Link
-                    to={"/product/" + previousProduct}
+                    to={`${rootPath}/product/${previousProduct}`}
                     className="ml-2 w-8 h-8 text-[#c0c0c0] border border-[#c0c0c0] hover:bg-[#007cba] hover:text-white focus:ring-4 focus:outline-none font-medium rounded-full text-sm text-center inline-flex items-center justify-center"
                   >
                     <i className="icon-angle-left"></i>
@@ -98,7 +102,7 @@ export const ProductItemDetails = () => {
 
                 {nextProduct && (
                   <Link
-                    to={"/product/" + nextProduct}
+                    to={`${rootPath}/product/${nextProduct}`}
                     className="ml-2 w-8 h-8 text-[#c0c0c0] border border-[#c0c0c0] hover:bg-[#007cba] hover:text-white focus:ring-4 focus:outline-none font-medium rounded-full text-sm text-center inline-flex items-center justify-center"
                   >
                     <i className="icon-angle-right"></i>

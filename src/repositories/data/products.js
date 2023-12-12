@@ -5,9 +5,9 @@ const products = [
     price: 14_240_000,
     category: "bo-may-tinh-choi-game",
     imageUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/m4-300x300.jpg",
+      "/abcd_react_abcd/images/products/m4-300x300.jpg",
     imageDetailUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/m2.jpg",
+      "/abcd_react_abcd/images/products/m4.jpg",
     slug: "core-i5-10400f-ram-16g-rtx-2060-super-8g-likenew-man",
     shortDescription: `
       * BỘ QUÀ TẶNG TỔNG TRỊ GIÁ 300.000 VNĐ
@@ -29,9 +29,9 @@ const products = [
     price: 13_480_000,
     category: "bo-may-tinh-choi-game",
     imageUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/m1-300x300.jpg",
+      "/abcd_react_abcd/images/products/m1-300x300.jpg",
     imageDetailUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/m1.jpg",
+      "/abcd_react_abcd/images/products/m1.jpg",
     slug: "core-i5-10400F-RAM-16G-RTX-2060-Super-8G-(Likenew)-MÀN",
     shortDescription: `
       * BỘ QUÀ TẶNG TỔNG TRỊ GIÁ 300.000 VNĐ
@@ -53,9 +53,9 @@ const products = [
     price: 14_100_000,
     category: "bo-may-tinh-choi-game",
     imageUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/m2-300x300.jpg",
+      "/abcd_react_abcd/images/products/m2-300x300.jpg",
     imageDetailUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/m2.jpg",
+      "/abcd_react_abcd/images/products/m2.jpg",
     slug: "core-i3-12100f-16g-rtx-2060-super-8g",
     shortDescription: `
       * BỘ QUÀ TẶNG TỔNG TRỊ GIÁ 300.000 VNĐ
@@ -77,9 +77,9 @@ const products = [
     price: 13_900_000,
     category: "bo-may-tinh-choi-game",
     imageUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/m3-300x300.jpg",
+      "/abcd_react_abcd/images/products/m3-300x300.jpg",
     imageDetailUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/m3.jpg",
+      "/abcd_react_abcd/images/products/m3.jpg",
     slug: "core-i5-10400f-ram-8g-gtx-1660-super-6g",
     shortDescription: `
       * BỘ QUÀ TẶNG TỔNG TRỊ GIÁ 300.000 VNĐ
@@ -101,9 +101,9 @@ const products = [
     price: 3_800_000,
     category: "pc-van-phong-game-nhe",
     imageUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/v2-300x300.jpg",
+      "/abcd_react_abcd/images/products/v2-300x300.jpg",
     imageDetailUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/v2.jpg",
+      "/abcd_react_abcd/images/products/v2.jpg",
     slug: "core-i5-4570-RAM-8G-SSD-240G",
     shortDescription: `
       * BỘ QUÀ TẶNG TỔNG TRỊ GIÁ 300.000 VNĐ
@@ -126,9 +126,9 @@ const products = [
     category: "pc-van-phong-game-nhe",
     tag: ["new"],
     imageUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/v1-300x300.jpg",
+      "/abcd_react_abcd/images/products/v1-300x300.jpg",
     imageDetailUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/v1.jpg",
+      "/abcd_react_abcd/images/products/v1.jpg",
     slug: "combo-dell-optiplex",
     shortDescription: `
       * BỘ QUÀ TẶNG TỔNG TRỊ GIÁ 300.000 VNĐ
@@ -151,9 +151,9 @@ const products = [
     category: "pc-van-phong-game-nhe",
     tag: ["new"],
     imageUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/v3-300x300.png",
+      "/abcd_react_abcd/images/products/v3-300x300.png",
     imageDetailUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/v3.png",
+      "/abcd_react_abcd/images/products/v3.png",
     slug: "Ryzen-5-4600G-RAM-16G-SSD-240G",
     shortDescription: `
       * BỘ QUÀ TẶNG TỔNG TRỊ GIÁ 300.000 VNĐ
@@ -176,9 +176,9 @@ const products = [
     category: "pc-van-phong-game-nhe",
     tag: ["new"],
     imageUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/v4-300x300.png",
+      "/abcd_react_abcd/images/products/v4-300x300.png",
     imageDetailUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/v4.png",
+      "/abcd_react_abcd/images/products/v4.png",
     slug: "man-hinh-may-tinh-e-dra-egm24f100-23-8-inch-fhd-ips",
     shortDescription: `
       * BỘ QUÀ TẶNG TỔNG TRỊ GIÁ 300.000 VNĐ
@@ -201,9 +201,9 @@ const products = [
     category: "man-hinh-may-tinh",
     tag: ["new"],
     imageUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/x2-300x300.jpg",
+      "/abcd_react_abcd/images/products/x2-300x300.jpg",
     imageDetailUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/x2.jpg",
+      "/abcd_react_abcd/images/products/x2.jpg",
     slug: "man-hinh-dell-e2318h-23-inch-ips-fhd",
     shortDescription: `
       * BỘ QUÀ TẶNG TỔNG TRỊ GIÁ 300.000 VNĐ
@@ -226,9 +226,9 @@ const products = [
     category: "man-hinh-may-tinh",
     tag: ["new"],
     imageUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/x1-300x300.png",
+      "/abcd_react_abcd/images/products/x1-300x300.png",
     imageDetailUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/x1.png",
+      "/abcd_react_abcd/images/products/x1.png",
     slug: "man-hinh-lg-24gq50f-b-23-8inch-ultragear-1ms-165hz",
     shortDescription: `
       * BỘ QUÀ TẶNG TỔNG TRỊ GIÁ 300.000 VNĐ
@@ -251,9 +251,9 @@ const products = [
     category: "man-hinh-may-tinh",
     tag: ["new"],
     imageUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/x2-300x300.jpg",
+      "/abcd_react_abcd/images/products/x2-300x300.jpg",
     imageDetailUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/x2.jpg",
+      "/abcd_react_abcd/images/products/x2.jpg",
     slug: "man-hinh-dell-p2722h-27-inch-fhd-ips",
     shortDescription: `
       * BỘ QUÀ TẶNG TỔNG TRỊ GIÁ 300.000 VNĐ
@@ -276,9 +276,9 @@ const products = [
     category: "man-hinh-may-tinh",
     tag: ["new"],
     imageUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/x4-300x300.png",
+      "/abcd_react_abcd/images/products/x4-300x300.png",
     imageDetailUrl:
-      "https://thuongtinmarket.viachat.vn/wp-content/uploads/2023/06/x4.png",
+      "/abcd_react_abcd/images/products/x4.png",
     slug: "man-hinh-dell-p2722h-27-inch-fhd-ips",
     shortDescription: `
       * BỘ QUÀ TẶNG TỔNG TRỊ GIÁ 300.000 VNĐ

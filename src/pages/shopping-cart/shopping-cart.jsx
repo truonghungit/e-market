@@ -3,6 +3,10 @@ import { useShoppingCart } from "../../shopping-cart";
 import { formatNumber } from "../../utils/format";
 import { QuantityInput } from "../../components/input/quantity-input";
 
+import appConfig from "../../configs";
+
+const rootPath = appConfig.rootPath;
+
 export const ShoppingCartPage = () => {
   const { shoppingCart, total, removeProduct, updateQuantity } =
     useShoppingCart();
@@ -13,7 +17,7 @@ export const ShoppingCartPage = () => {
     <div className="container">
       <ol className="flex items-center justify-center w-full p-3 py-8 space-x-2 text-sm font-medium text-center text-[#ccc] dark:text-gray-400 sm:text-base pl-0 sm:space-x-4 rtl:space-x-reverse">
         <li className="flex items-center uppercase">
-          <NavLink to="/cart" className="mr-3 text-2xl text-neutral-800">
+          <NavLink to={`${rootPath.rootPath}/cart`} className="mr-3 text-2xl text-neutral-800">
             Shopping Cart
           </NavLink>
           <svg
@@ -30,7 +34,7 @@ export const ShoppingCartPage = () => {
           </svg>
         </li>
         <li className="flex items-center">
-          <NavLink to="/checkout" className="uppercase mr-3 text-2xl">
+          <NavLink to={`${rootPath.rootPath}/checkout`} className="uppercase mr-3 text-2xl">
             Checkout details
           </NavLink>
           <svg
@@ -58,7 +62,7 @@ export const ShoppingCartPage = () => {
 
             <div className="mt-6">
               <Link
-                to={"/shop"}
+                to={`${rootPath}/shop`}
                 className="text-white font-semibold uppercase border-2 border-[#007cba] py-2 px-4 bg-[#007cba] hover:bg-[#007cba] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 text-sm text-center inline-flex items-center justify-center"
               >
                 Quay lại cửa hàng
@@ -99,6 +103,8 @@ export const ShoppingCartPage = () => {
                           &times;
                         </button>
 
+                        <img className="w-full max-w-full" src={item.product.imageUrl} alt={item.product.name} />
+
                         <div className="uppercase">{item.product.name}</div>
                       </div>
                     </td>
@@ -125,7 +131,7 @@ export const ShoppingCartPage = () => {
 
             <div className="mt-6">
               <Link
-                to={"/shop"}
+                to={`${rootPath}/shop`}
                 className="btn text-[#007cba] font-semibold uppercase border-2 border-[#007cba] py-2 px-4 hover:bg-[#007cba] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 text-sm text-center inline-flex items-center justify-center"
               >
                 ← Tiếp tục xem sản phẩm
@@ -174,7 +180,7 @@ export const ShoppingCartPage = () => {
               </table>
               <div className="my-6">
                 <Link
-                  to="/checkout"
+                  to={`${rootPath}/checkout`}
                   className="btn w-full text-white font-semibold uppercase border-2 py-2 px-4 border-[#dd3333] bg-[#dd3333] focus:ring-4 focus:outline-none text-sm text-center inline-flex items-center justify-center"
                 >
                   Tiến hành thanh toán

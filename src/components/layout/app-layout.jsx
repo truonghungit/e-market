@@ -5,7 +5,7 @@ import { Header } from "../header";
 
 export const AppLayout = () => {
   return (
-    <div>
+    <div className="bg-white">
       <Header />
       <main className="main-content">
         <Outlet />

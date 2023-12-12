@@ -1,5 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import "./nav.css";
+import appConfig from "../../configs";
+
+const rootPath = appConfig.rootPath;
 
 const NavItem = ({ to, text }) => {
   return (
@@ -17,13 +20,13 @@ export const Nav = () => {
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <div className="hidden w-full md:block md:w-auto" id="navbar-dropdown">
           <ul className="flex flex-row gap-6">
-            <NavItem to="/" text="Trang Chủ" />
-            <NavItem to="/gioi-thieu" text="Giới thiệu" />
-            <NavItem to="/shop" text="Cửa hàng" />
-            <NavItem to="/tin-tuc" text="Tin tức" />
+            <NavItem to={rootPath} text="Trang Chủ" />
+            <NavItem to={`${rootPath}/gioi-thieu`} text="Giới thiệu" />
+            <NavItem to={`${rootPath}/shop`} text="Cửa hàng" />
+            <NavItem to={`${rootPath}/tin-tuc`} text="Tin tức" />
 
             <li className="dropdown nav-item">
-              <a href="#" className="py-2.5 h-full w-max flex items-center">
+              <a href="/#" className="py-2.5 h-full w-max flex items-center">
                 <span className="uppercase font-bold text-[13px]">
                   Chính sách
                 </span>
@@ -48,7 +51,15 @@ export const Nav = () => {
                 <ul className="divide-y divide-[#ececec] py-2 text-sm text-gray-700 dark:text-gray-400">
                   <li>
                     <Link
-                      to="/dieu-khoan-dich-vu"
+                      to={`${rootPath}/chinh-sach-bao-mat`}
+                      className="block w-full py-2 px-3 text-[#777]"
+                    >
+                      <span>Chính sách bảo mật</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to={`${rootPath}/dieu-khoan-dich-vu`}
                       className="block w-full py-2 px-3 text-[#777]"
                     >
                       <span>Điều khoản dịch vụ</span>
@@ -56,25 +67,17 @@ export const Nav = () => {
                   </li>
                   <li>
                     <Link
-                      to="/chinh-sach-doi-tra-hang"
+                      to={`${rootPath}/chinh-sach-doi-tra-hang`}
                       className="block w-full py-2 px-3 text-[#777]"
                     >
                       <span>Chính sách đổi hoặc trả hàng</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/lien-he"
-                      className="block w-full py-2 px-3 text-[#777]"
-                    >
-                      <span>Liên hệ</span>
                     </Link>
                   </li>
                 </ul>
               </div>
             </li>
 
-            <NavItem to="/lien-he" text="Liên hệ" />
+            <NavItem to={`${rootPath}/lien-he`} text="Liên hệ" />
           </ul>
         </div>
       </div>

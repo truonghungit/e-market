@@ -1,19 +1,19 @@
 import { Link, NavLink } from "react-router-dom";
 import { useShoppingCart } from "../../shopping-cart";
 import { formatNumber } from "../../utils/format";
-import { QuantityInput } from "../../components/input/quantity-input";
+
+import appConfig from "../../configs";
+
+const rootPath = appConfig.rootPath;
 
 export const CheckoutPage = () => {
-  const { shoppingCart, total, removeProduct, updateQuantity } =
-    useShoppingCart();
-
-  console.log({ shoppingCart });
+  const { shoppingCart, total } = useShoppingCart();
 
   return (
     <div className="container">
       <ol className="flex items-center justify-center w-full p-3 py-8 space-x-2 text-sm font-medium text-center text-[#ccc] dark:text-gray-400 sm:text-base pl-0 sm:space-x-4 rtl:space-x-reverse">
         <li className="flex items-center uppercase">
-          <NavLink to="/cart" className="mr-3 text-2xl">
+          <NavLink to={`${rootPath.rootPath}/cart`} className="mr-3 text-2xl">
             Shopping Cart
           </NavLink>
           <svg
@@ -31,7 +31,7 @@ export const CheckoutPage = () => {
         </li>
         <li className="flex items-center">
           <NavLink
-            to="/checkout"
+            to={`${rootPath.rootPath}/checkout`}
             className="uppercase mr-3 text-2xl text-neutral-800"
           >
             Checkout details
@@ -61,7 +61,7 @@ export const CheckoutPage = () => {
 
             <div className="mt-6">
               <Link
-                to={"/shop"}
+                to={`${rootPath}/shop`}
                 className="text-white font-semibold uppercase border-2 border-[#007cba] py-2 px-4 bg-[#007cba] hover:bg-[#007cba] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 text-sm text-center inline-flex items-center justify-center"
               >
                 Quay lại cửa hàng
@@ -72,8 +72,7 @@ export const CheckoutPage = () => {
       ) : (
         <div className="flex mb-10">
           <div className="w-7/12">
-            <div>
-            </div>
+            <div></div>
             <form>
               <div className="font-bold uppercase mt-6">
                 Thông tin thanh toán
@@ -253,7 +252,7 @@ export const CheckoutPage = () => {
                 Your personal data will be used to process your order, support
                 your experience throughout this website, and for other purposes
                 described in our{" "}
-                <a href="#" className="text-neutral-700">
+                <a href="/#" className="text-neutral-700">
                   chính sách riêng tư
                 </a>
                 .

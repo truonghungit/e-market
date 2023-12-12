@@ -5,12 +5,16 @@ import { useEffect, useRef } from "react";
 import "./header.css";
 import { formatNumber } from "../../utils/format";
 
+import appConfig from "../../configs";
+
+const rootPath = appConfig.rootPath;
+
 export const Header = () => {
   const prevScrollY = useRef(0);
   const { shoppingCart, total } = useShoppingCart();
   const navigate = useNavigate();
   const routerChange = () => {
-    navigate("/cart");
+    navigate(`${rootPath}/cart`);
   };
 
   const totalQuantity = shoppingCart
@@ -79,7 +83,7 @@ export const Header = () => {
           </button>
           <div className="container mx-auto flex justify-between items-center gap-4 py-3">
             <div className="text-[#007cba] text-xl lg:text-[32px] font-bold text-center lg:text-start logo leading-none">
-              <Link to="/">CÔNG TY CỔ PHẦN THƯỜNG TÍN MARKET</Link>
+              <Link to={rootPath}>CÔNG TY CỔ PHẦN THƯỜNG TÍN MARKET</Link>
             </div>
 
             <div className="md:w-64 hidden lg:inline-flex">

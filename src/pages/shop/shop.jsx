@@ -9,6 +9,10 @@ import { ProductItem } from "../../components/product-item";
 import { useGetProductsByCategory } from "../../queries/products.query";
 import { ProductCategories } from "./categories";
 
+import appConfig from "../../configs";
+
+const rootPath = appConfig.rootPath;
+
 export const ShopPage = () => {
   const { category } = useParams();
   const [priceFilter, setPriceFilter] = useState({});
@@ -70,7 +74,7 @@ export const ShopPage = () => {
       <div className="container">
         <div className="flex flex-col xl:flex-row justify-between">
           <div className="uppercase mb-2 text-lg">
-            <Link to="/">trang chủ</Link>
+            <Link to={rootPath}>trang chủ</Link>
             <span> / </span>
             <span className="font-bold">shop</span>
           </div>

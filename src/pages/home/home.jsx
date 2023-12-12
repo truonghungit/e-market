@@ -47,7 +47,7 @@ export const HomePage = () => {
   const { data: newProducts } = useGetNewProducts({ pageSize: 8 });
 
   return (
-    <div className="pt-4 pb-8">
+    <div className="pt-4 pb-8 bg-white">
       <div className="container">
         <div className="">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">

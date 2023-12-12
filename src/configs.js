@@ -1,4 +1,5 @@
 const appConfig = {
+  rootPath: '/abcd_react_abcd',
   company: {
     name: "Công ty cổ phần Thường Tín Market",
     address:

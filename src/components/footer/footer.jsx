@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 
 import appConfig from "../../configs";
 
+const rootPath = appConfig.rootPath;
+
 export const Footer = () => {
   return (
     <footer>
@@ -37,7 +39,7 @@ export const Footer = () => {
               <ul className="divide-y divide-blue-600">
                 <li>
                   <Link
-                    href="#"
+                    to={`${rootPath}/chinh-sach-bao-mat`}
                     className="py-1.5 inline-block text-neutral-100 hover:text-neutral-50 "
                   >
                     Chính sách bảo mật
@@ -45,7 +47,7 @@ export const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    to={`${rootPath}/chinh-sach-doi-tra-hang`}
                     className="py-1.5 inline-block text-neutral-100 hover:text-neutral-50"
                   >
                     Chính sách đổi/ trả hàng
@@ -53,7 +55,7 @@ export const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    to={`${rootPath}/dieu-khoan-dich-vu`}
                     className="py-1.5 inline-block text-neutral-100 hover:text-neutral-50"
                   >
                     Điều khoản dịch vụ
