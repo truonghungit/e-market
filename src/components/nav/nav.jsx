@@ -16,8 +16,8 @@ const NavItem = ({ to, text }) => {
 
 export const Nav = () => {
   return (
-    <nav className="bg-[#007cba] border-gray-200 hidden lg:block">
-      <div className="container flex flex-wrap items-center justify-between mx-auto">
+    <nav className="bg-[#007cba] border-gray-200 hidden md:block">
+      <div className="px-2 lg:container flex flex-wrap items-center justify-between mx-auto">
         <div className="hidden w-full md:block md:w-auto" id="navbar-dropdown">
           <ul className="flex flex-row gap-6">
             <NavItem to={rootPath} text="Trang Chủ" />

@@ -71,15 +71,15 @@ export const ShopPage = () => {
 
   return (
     <div className="py-8">
-      <div className="container">
-        <div className="flex flex-col xl:flex-row justify-between">
+      <div className="px-2 lg:container">
+        <div className="flex flex-col md:flex-row justify-between">
           <div className="uppercase mb-2 text-lg">
             <Link to={rootPath}>trang chủ</Link>
             <span> / </span>
             <span className="font-bold">shop</span>
           </div>
           <div className="flex items-center">
-            <span className="hidden xl:inline-block mr-3">
+            <span className="hidden md:inline-block mr-3">
               Hiển thị tất cả {products?.length} kết quả
             </span>
             <div className=" w-64">
@@ -96,8 +96,8 @@ export const ShopPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col xl:flex-row pt-7">
-          <div className="w-full xl:w-3/12 pr-3">
+        <div className="flex flex-col md:flex-row pt-7">
+          <div className="w-full md:w-3/12 pr-3">
             {((priceFilter.min !== null && priceFilter.min !== undefined) ||
               (priceFilter.max !== null && priceFilter.max !== undefined)) && (
               <div className="mb-4">
@@ -174,10 +174,10 @@ export const ShopPage = () => {
               </div>
             </div>
           </div>
-          <div className="w-full xl:w-9/12">
+          <div className="w-full md:w-9/12">
             <div>
               {products && (
-                <div className="grid auto-rows-auto grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-8">
+                <div className="grid auto-rows-auto grid-cols-2 sm:grid-cols-3 gap-x-5 gap-y-8">
                   {products.map((product) => (
                     <ProductItem
                       {...product}

@@ -14,10 +14,13 @@ export const ShoppingCartPage = () => {
   console.log({ shoppingCart });
 
   return (
-    <div className="container">
+    <div className="px-2 lg:container">
       <ol className="flex items-center justify-center w-full p-3 py-8 space-x-2 text-sm font-medium text-center text-[#ccc] dark:text-gray-400 sm:text-base pl-0 sm:space-x-4 rtl:space-x-reverse">
         <li className="flex items-center uppercase">
-          <NavLink to={`${rootPath.rootPath}/cart`} className="mr-3 text-2xl text-neutral-800">
+          <NavLink
+            to={`${appConfig.rootPath}/cart`}
+            className="mr-3 text-lg md:text-xl lg:text-2xl text-neutral-800"
+          >
             Shopping Cart
           </NavLink>
           <svg
@@ -34,7 +37,10 @@ export const ShoppingCartPage = () => {
           </svg>
         </li>
         <li className="flex items-center">
-          <NavLink to={`${rootPath.rootPath}/checkout`} className="uppercase mr-3 text-2xl">
+          <NavLink
+            to={`${appConfig.rootPath}/checkout`}
+            className="uppercase mr-3 text-lg md:text-xl lg:text-2xl"
+          >
             Checkout details
           </NavLink>
           <svg
@@ -50,8 +56,8 @@ export const ShoppingCartPage = () => {
             />
           </svg>
         </li>
-        <li className="flex items-center uppercase">
-          <NavLink className="text-2xl">Order complete</NavLink>
+        <li className="flex items-center ">
+          <NavLink className="uppercase text-lg md:text-xl lg:text-2xl">Order complete</NavLink>
         </li>
       </ol>
 
@@ -71,8 +77,8 @@ export const ShoppingCartPage = () => {
           </div>
         </div>
       ) : (
-        <div className="flex mb-10">
-          <div className="w-8/12 pr-7">
+        <div className="flex flex-col lg:flex-row mb-10">
+          <div className="w-full lg:w-8/12 lg:pr-7">
             <table className="text-sm">
               <thead>
                 <tr className="uppercase text-[#777777] text-sm font-bold tracking-wider">
@@ -103,7 +109,13 @@ export const ShoppingCartPage = () => {
                           &times;
                         </button>
 
-                        <img className="w-full max-w-full" src={item.product.imageUrl} alt={item.product.name} />
+                        <div className="w-16 flex-shrink-0">
+                          <img
+                            className="w-full max-w-full"
+                            src={item.product.imageUrl}
+                            alt={item.product.name}
+                          />
+                        </div>
 
                         <div className="uppercase">{item.product.name}</div>
                       </div>
@@ -145,7 +157,7 @@ export const ShoppingCartPage = () => {
             </div>
           </div>
 
-          <div className="w-4/12 pl-7 border-l-[1px] text-left">
+          <div className="w-full lg:w-4/12 lg:pl-7 mt-6 lg:mt-0 border-l-[1px] text-left">
             <div>
               <table className="text-sm mb-3 w-full border-[#ececec]">
                 <thead>

@@ -3,7 +3,7 @@ import appConfig from "../../configs";
 export const PrivacyPage = () => {
   return (
     <div className="py-8">
-      <div className="container text-neutral-500">
+      <div className="px-2 lg:container text-neutral-500">
         <h4 className="font-bold text-lg text-neutral-900 uppercase mb-2">
           {appConfig.company.name}
         </h4>

@@ -8,9 +8,9 @@ export const Footer = () => {
   return (
     <footer>
       <div className="bg-[#007cba]">
-        <div className="container py-8  text-white">
-          <div className="flex flex-col lg:flex-row gap-4">
-            <div className="w-1/2">
+        <div className="px-2 lg:container py-8  text-white">
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="w-full md:w-1/2">
               <div className="uppercase font-semibold text-neutral-100">
                 Giới thiệu về chúng tôi
               </div>
@@ -31,7 +31,7 @@ export const Footer = () => {
               </div>
             </div>
 
-            <div className="w-1/2">
+            <div className="w-full md:w-1/2">
               <div className="uppercase font-semibold text-neutral-100">
                 Chính sách và điều khoản
               </div>

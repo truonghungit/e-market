@@ -3,7 +3,7 @@ import appConfig from "../../configs";
 export const AboutPage = () => {
   return (
     <div className="py-8">
-      <div className="container">
+      <div className="px-2 lg:container">
         <h4 className="font-bold uppercase mb-2">{appConfig.company.name}</h4>
 
         <div className="text-neutral-500">

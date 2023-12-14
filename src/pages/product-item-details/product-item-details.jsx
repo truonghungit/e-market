@@ -55,9 +55,9 @@ export const ProductItemDetails = () => {
   }
   return (
     <div className="py-8">
-      <div className="container">
-        <div className="flex">
-          <div className="w-1/2">
+      <div className="px-2 lg:container">
+        <div className="flex flex-col md:flex-row">
+          <div className="w-full md:w-1/2">
             <img
               className="w-full max-w-full cursor-pointer object-cover"
               src={product.imageDetailUrl}
@@ -73,8 +73,8 @@ export const ProductItemDetails = () => {
               <i className="icon-expand"></i>
             </button>
           </div>
-          <div className="w-1/2 p-8 pr-0 pt-5">
-            <div className="flex gap-4 justify-between">
+          <div className="w-full md:w-1/2 px-0 md:pl-8 pt-5">
+            <div className="flex flex-col md:flex-row md:gap-4 justify-between">
               <div>
                 <div>
                   <div className="uppercase mb-2 text-neutral-500 text-sm">
@@ -94,7 +94,7 @@ export const ProductItemDetails = () => {
                 {previousProduct && (
                   <Link
                     to={`${rootPath}/product/${previousProduct}`}
-                    className="ml-2 w-8 h-8 text-[#c0c0c0] border border-[#c0c0c0] hover:bg-[#007cba] hover:text-white focus:ring-4 focus:outline-none font-medium rounded-full text-sm text-center inline-flex items-center justify-center"
+                    className="ml-0 md:ml-2 w-8 h-8 text-[#c0c0c0] border border-[#c0c0c0] hover:bg-[#007cba] hover:text-white focus:ring-4 focus:outline-none font-medium rounded-full text-sm text-center inline-flex items-center justify-center"
                   >
                     <i className="icon-angle-left"></i>
                   </Link>
@@ -121,7 +121,7 @@ export const ProductItemDetails = () => {
               dangerouslySetInnerHTML={{ __html: product.shortDescription }}
             ></div>
 
-            <div className="mt-6 flex flex-col gap-4">
+            <div className="mt-6 flex md:flex-col gap-4">
               <div>
                 <QuantityInput value={quantity} onChange={setQuantity} />
               </div>
@@ -157,7 +157,7 @@ export const ProductItemDetails = () => {
 
           <div className="mt-6">
             {similarProducts && (
-              <div className="grid auto-rows-auto grid-cols-4 gap-x-5 gap-y-8">
+              <div className="grid auto-rows-auto grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-8">
                 {similarProducts.map((product) => (
                   <ProductItem
                     {...product}

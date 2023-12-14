@@ -10,10 +10,10 @@ export const CheckoutPage = () => {
   const { shoppingCart, total } = useShoppingCart();
 
   return (
-    <div className="container">
+    <div className="px-2 lg:container">
       <ol className="flex items-center justify-center w-full p-3 py-8 space-x-2 text-sm font-medium text-center text-[#ccc] dark:text-gray-400 sm:text-base pl-0 sm:space-x-4 rtl:space-x-reverse">
         <li className="flex items-center uppercase">
-          <NavLink to={`${rootPath.rootPath}/cart`} className="mr-3 text-2xl">
+          <NavLink to={`${appConfig.rootPath}/cart`} className="mr-3 text-lg md:text-xl lg:text-2xl">
             Shopping Cart
           </NavLink>
           <svg
@@ -31,8 +31,8 @@ export const CheckoutPage = () => {
         </li>
         <li className="flex items-center">
           <NavLink
-            to={`${rootPath.rootPath}/checkout`}
-            className="uppercase mr-3 text-2xl text-neutral-800"
+            to={`${appConfig.rootPath}/checkout`}
+            className="uppercase mr-3 text-lg md:text-xl lg:text-2xl text-neutral-800"
           >
             Checkout details
           </NavLink>
@@ -49,8 +49,8 @@ export const CheckoutPage = () => {
             />
           </svg>
         </li>
-        <li className="flex items-center uppercase">
-          <NavLink className="text-2xl">Order complete</NavLink>
+        <li className="flex items-center ">
+          <NavLink className="uppercase text-lg md:text-xl lg:text-2xl">Order complete</NavLink>
         </li>
       </ol>
 
@@ -70,8 +70,8 @@ export const CheckoutPage = () => {
           </div>
         </div>
       ) : (
-        <div className="flex mb-10">
-          <div className="w-7/12">
+        <div className="flex flex-col lg:flex-row mb-10">
+          <div className="w-full lg:w-7/12">
             <div></div>
             <form>
               <div className="font-bold uppercase mt-6">
@@ -186,11 +186,11 @@ export const CheckoutPage = () => {
             </form>
           </div>
 
-          <div className="w-5/12 pl-7">
+          <div className="w-full mt-4 lg:mt-0 lg:w-5/12 lg:pl-7">
             <div className="py-6 px-7 border-2 border-[#007cba]">
               <div className="font-bold uppercase">Đơn hàng của bạn</div>
 
-              <table className="text-sm mt-3">
+              <table className="text-sm mt-3 w-full">
                 <thead>
                   <tr className="uppercase text-[#777777] text-sm font-bold tracking-wider">
                     <th className="border-b-2 border-solid border-neutral-200 p-2 pl-0 text-left">

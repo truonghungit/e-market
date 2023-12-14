@@ -56,37 +56,38 @@ export const Header = () => {
       </div>
 
       <div className="header-main">
-        <div className="flex items-center justify-center">
-          <button
-            data-collapse-toggle="navbar-dropdown"
-            type="button"
-            className="inline-flex toggle-menu-button xl:hidden items-center p-2 w-10 h-10 justify-center text-sm rounded-lg focus:outline-none "
-            aria-controls="navbar-dropdown"
-            aria-expanded="false"
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
+        <div className="flex items-center">
+          <div className="px-2 w-full lg:container mx-auto flex justify-between items-center gap-4 py-3">
+            <button
+              data-collapse-toggle="navbar-dropdown"
+              type="button"
+              className="inline-flex toggle-menu-button md:hidden items-center p-2 w-10 h-10 justify-center text-sm rounded-lg focus:outline-none "
+              aria-controls="navbar-dropdown"
+              aria-expanded="false"
             >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
-          <div className="container mx-auto flex justify-between items-center gap-4 py-3">
+              <span className="sr-only">Open main menu</span>
+              <svg
+                className="w-5 h-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 17 14"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 1h15M1 7h15M1 13h15"
+                />
+              </svg>
+            </button>
+
             <div className="text-[#007cba] text-xl lg:text-[32px] font-bold text-center lg:text-start logo leading-none">
               <Link to={rootPath}>CÔNG TY CỔ PHẦN THƯỜNG TÍN MARKET</Link>
             </div>
 
-            <div className="md:w-64 hidden lg:inline-flex">
+            <div className="md:w-64 hidden md:inline-flex">
               <div className="relative flex w-full">
                 <input
                   type="search"
@@ -105,12 +106,14 @@ export const Header = () => {
             <div className="header-button rounded-full">
               <button
                 type="button"
-                className="text-white flex gap-1 cart-button relative  bg-[#007cba] focus:outline-none font-bold rounded-full px-5 py-2 text-center"
+                className="text-white h-8 w-8 lg:w-auto lg:h-auto flex items-center gap-1 cart-button relative  bg-[#007cba] focus:outline-none font-bold rounded-full px-2 lg:px-5 py-2 text-center"
                 onClick={routerChange}
               >
-                <span className="bg-red-500 absolute -top-1.5 -right-1 text-white text-xs font-bold h-5 w-5 flex justify-center items-center rounded-full">
-                  {totalQuantity}
-                </span>
+                {totalQuantity > 0 && (
+                  <span className="bg-red-500 absolute -top-1.5 -right-1 text-white text-xs font-bold h-5 w-5 flex justify-center items-center rounded-full">
+                    {totalQuantity}
+                  </span>
+                )}
                 <span className="hidden lg:block uppercase">Giỏ hàng / </span>
                 <span className="hidden lg:block">{formatNumber(total)}</span>
                 <i className="icon-shopping-bag text-[1.2em]"></i>
