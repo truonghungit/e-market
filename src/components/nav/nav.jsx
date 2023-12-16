@@ -26,7 +26,7 @@ export const Nav = () => {
             <NavItem to={`${rootPath}/tin-tuc`} text="Tin tức" />
 
             <li className="dropdown nav-item">
-              <a href="/#" className="py-2.5 h-full w-max flex items-center">
+              <span className="py-2.5 h-full w-max flex items-center cursor-pointer">
                 <span className="uppercase font-bold text-[13px]">
                   Chính sách
                 </span>
@@ -45,7 +45,7 @@ export const Nav = () => {
                     d="m1 1 4 4 4-4"
                   />
                 </svg>
-              </a>
+              </span>
 
               <div className="dropdown-menu hidden z-10 font-normal w-56 bg-white divide-y divide-gray-100 rounded-b-lg shadow-md border border-neutral-300 border-t-0 before:content-[''] before:absolute before:h-0 before:w-0 before:border-x-8 before:border-x-transparent before:border-b-8 before:border-b-white before:-top-2 before:left-6  ">
                 <ul className="divide-y divide-[#ececec] py-2 text-sm text-gray-700 dark:text-gray-400">

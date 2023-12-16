@@ -4,7 +4,7 @@
 }
 
 .is-sticky {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -13,10 +13,6 @@
   background-color: #ffffff;
   padding-top: 0px;
   padding-bottom: 0px;
-}
-
-.logo {
-  width: 400px;
 }
 
 .toggle-menu-button {
@@ -68,4 +64,16 @@
 
 .cart-button:hover {
   box-shadow: inset 0 0 0 100px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown .dropdown-menu {
+  position: absolute;
 }

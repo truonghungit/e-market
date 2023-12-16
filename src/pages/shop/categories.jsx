@@ -1,5 +1,9 @@
 import { NavLink } from "react-router-dom";
 
+import appConfig from "../../configs";
+
+const rootPath = appConfig.rootPath;
+
 export const ProductCategory = ({ category }) => {
   const navLinkClasses = ({ isActive }) => {
     if (isActive) {
@@ -12,7 +16,7 @@ export const ProductCategory = ({ category }) => {
   return (
     <li>
       <NavLink
-        to={category.link}
+        to={`${rootPath}${category.link}`}
         className={navLinkClasses}
       >
         {category.text}

@@ -1,21 +1,27 @@
-import { Nav } from "../nav";
-import { useShoppingCart } from "../../shopping-cart";
+import { useEffect, useRef, useState, Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useRef } from "react";
-import "./header.css";
-import { formatNumber } from "../../utils/format";
+import { Popover, Transition } from "@headlessui/react";
 
+import "./header.css";
+
+import { Nav, NavMobile } from "../nav";
+import { useShoppingCart } from "../../shopping-cart";
+import { formatNumber } from "../../utils/format";
 import appConfig from "../../configs";
 
 const rootPath = appConfig.rootPath;
 
 export const Header = () => {
   const prevScrollY = useRef(0);
-  const { shoppingCart, total } = useShoppingCart();
+  const { shoppingCart, total, removeProduct } = useShoppingCart();
   const navigate = useNavigate();
+  const [keyword, setKeyword] = useState("");
+
   const routerChange = () => {
     navigate(`${rootPath}/cart`);
   };
+
+  const [isShowMobileNav, setIsShowMobileNav] = useState(false);
 
   const totalQuantity = shoppingCart
     ? shoppingCart.reduce((pre, item) => {
@@ -23,12 +29,26 @@ export const Header = () => {
       }, 0)
     : 0;
 
+  const handleSearch = () => {
+    navigate(`${rootPath}/shop?s=${keyword}`);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.code === "Enter") {
+      handleSearch();
+    }
+  };
+
+  useEffect(() => {});
+
   useEffect(() => {
     const isSticky = (e) => {
       const scrollY = window.scrollY;
       let scrollDirection = scrollY > prevScrollY.current ? "down" : "up";
 
       const header = document.querySelector(".header-main");
+
+      console.log("scroll Y", scrollY, scrollDirection);
 
       if (scrollDirection === "down") {
         if (scrollY > 250) {
@@ -56,35 +76,38 @@ export const Header = () => {
       </div>
 
       <div className="header-main">
-        <div className="flex items-center">
+        <div className="flex flex-col items-stretch">
           <div className="px-2 w-full lg:container mx-auto flex justify-between items-center gap-4 py-3">
-            <button
-              data-collapse-toggle="navbar-dropdown"
-              type="button"
-              className="inline-flex toggle-menu-button md:hidden items-center p-2 w-10 h-10 justify-center text-sm rounded-lg focus:outline-none "
-              aria-controls="navbar-dropdown"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 17 14"
+            <div className="flex gap-4 flex-row justify-start items-center">
+              <button
+                data-collapse-toggle="navbar-dropdown"
+                type="button"
+                onClick={() => setIsShowMobileNav(true)}
+                className="inline-flex toggle-menu-button md:hidden items-center p-2 w-10 h-10 justify-center text-sm rounded-lg focus:outline-none "
+                aria-controls="navbar-dropdown"
+                aria-expanded="false"
               >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M1 1h15M1 7h15M1 13h15"
-                />
-              </svg>
-            </button>
+                <span className="sr-only">Open main menu</span>
+                <svg
+                  className="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 17 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M1 1h15M1 7h15M1 13h15"
+                  />
+                </svg>
+              </button>
 
-            <div className="text-[#007cba] text-xl lg:text-[32px] font-bold text-center lg:text-start logo leading-none">
-              <Link to={rootPath}>CÔNG TY CỔ PHẦN THƯỜNG TÍN MARKET</Link>
+              <div className="text-[#007cba] text-xl md:text-[24px] lg:text-[32px] lg:max-w-sm font-bold text-center lg:text-start logo leading-none">
+                <Link to={rootPath}>CÔNG TY CỔ PHẦN THƯỜNG TÍN MARKET</Link>
+              </div>
             </div>
 
             <div className="md:w-64 hidden md:inline-flex">
@@ -93,36 +116,139 @@ export const Header = () => {
                   type="search"
                   className="search-input"
                   placeholder="Tìm kiếm..."
+                  value={keyword}
+                  onChange={(event) => setKeyword(event.target.value)}
+                  onKeyDown={handleKeyDown}
                 />
 
                 <button
                   className="search-button flex items-center justify-center text-white"
                   type="button"
+                  onClick={handleSearch}
                 >
                   <i className="icon-search text-[1.2em]"></i>
                 </button>
               </div>
             </div>
-            <div className="header-button rounded-full">
-              <button
-                type="button"
-                className="text-white h-8 w-8 lg:w-auto lg:h-auto flex items-center gap-1 cart-button relative  bg-[#007cba] focus:outline-none font-bold rounded-full px-2 lg:px-5 py-2 text-center"
-                onClick={routerChange}
-              >
-                {totalQuantity > 0 && (
-                  <span className="bg-red-500 absolute -top-1.5 -right-1 text-white text-xs font-bold h-5 w-5 flex justify-center items-center rounded-full">
-                    {totalQuantity}
-                  </span>
+            <div className="header-button rounded-full relative">
+              <Popover className="relative">
+                {({ open }) => (
+                  <>
+                    <Popover.Button className="text-white h-8 w-8 lg:w-auto lg:h-auto flex items-center gap-1 cart-button relative  bg-[#007cba] focus:outline-none font-bold rounded-full px-2 lg:px-5 py-2 text-center">
+                      {totalQuantity > 0 && (
+                        <span className="bg-red-500 absolute -top-1.5 -right-1 text-white text-xs font-bold h-5 w-5 flex justify-center items-center rounded-full">
+                          {totalQuantity}
+                        </span>
+                      )}
+                      <span className="hidden lg:block uppercase">
+                        Giỏ hàng /{" "}
+                      </span>
+                      <span className="hidden lg:block">
+                        {formatNumber(total)}
+                      </span>
+                      <i className="icon-shopping-bag text-[1.2em]"></i>
+                    </Popover.Button>
+                    <Transition
+                      show={open}
+                      as={Fragment}
+                      enter="transition ease-out duration-200"
+                      enterFrom="opacity-0 translate-y-1"
+                      enterTo="opacity-100 translate-y-0"
+                      leave="transition ease-in duration-150"
+                      leaveFrom="opacity-100 translate-y-0"
+                      leaveTo="opacity-0 translate-y-1"
+                    >
+                      <Popover.Panel className="absolute left-1/2 z-10 mt-3 -translate-x-1/2 transform px-4 sm:px-0 w-96">
+                        <div className="overflow-hidden bg-white shadow-lg ring-1 ring-black/5">
+                          <div className="p-6">
+                            {shoppingCart.length === 0 ? (
+                              <>
+                                <div>Chưa có sản phẩm trong giỏ hàng.</div>
+                              </>
+                            ) : (
+                              <>
+                                {shoppingCart.map((item) => (
+                                  <div key={item.id}>
+                                    <div className="border-b border-solid border-neutral-300 pr-2 py-4">
+                                      <div className="flex items-center gap-3">
+                                        <div className="w-16 flex-shrink-0">
+                                          <img
+                                            className="w-full max-w-full"
+                                            src={item.product.imageUrl}
+                                            alt={item.product.name}
+                                          />
+                                        </div>
+
+                                        <div className="uppercase">
+                                          {item.product.name}
+                                        </div>
+
+                                        <button
+                                          type="button"
+                                          onClick={() => removeProduct(item)}
+                                          className="w-5 h-5 flex-shrink-0 text-[#c0c0c0] border-2 border-[#c0c0c0] hover:border-neutral-700 hover:text-neutral-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold text-sm rounded-full text-center inline-flex items-center justify-center"
+                                        >
+                                          &times;
+                                        </button>
+                                      </div>
+
+                                      <div className="font-bold mt-2 justify-center text-neutral-600 flex gap-1 text-sm">
+                                        <span>{item.quantity}</span>
+                                        <span>x</span>
+                                        <span>
+                                          {formatNumber(item.product.price)}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                ))}
+
+                                <div className="font-bold text-center mt-4">
+                                  <span>Tổng số phụ:</span>
+                                  <span className="ml-2">
+                                    {formatNumber(total)}
+                                  </span>
+                                </div>
+                                <div className="mt-4">
+                                  <Popover.Button
+                                    className="btn w-full text-white font-semibold uppercase border-2 py-2 px-4 border-[#007cba] bg-[#007cba] focus:ring-4 focus:outline-none text-sm text-center inline-flex items-center justify-center"
+                                    as={Link}
+                                    to={`${rootPath}/cart`}
+                                  >
+                                    Xem giỏ hàng
+                                  </Popover.Button>
+                                </div>
+
+                                <div className="mt-4">
+                                  <Popover.Button
+                                    to={`${rootPath}/checkout`}
+                                    className="btn w-full text-white font-semibold uppercase border-2 py-2 px-4 border-[#dd3333] bg-[#dd3333] focus:ring-4 focus:outline-none text-sm text-center inline-flex items-center justify-center"
+                                    as={Link}
+                                  >
+                                    Thanh toán
+                                  </Popover.Button>
+                                </div>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </Popover.Panel>
+                    </Transition>
+                  </>
                 )}
-                <span className="hidden lg:block uppercase">Giỏ hàng / </span>
-                <span className="hidden lg:block">{formatNumber(total)}</span>
-                <i className="icon-shopping-bag text-[1.2em]"></i>
-              </button>
+              </Popover>
             </div>
           </div>
+
+          <div className="border-t border-[#ddd] mx-4 block lg:hidden"></div>
         </div>
 
-        <Nav />
+        {!isShowMobileNav && <Nav />}
+
+        <NavMobile
+          show={isShowMobileNav}
+          onClose={() => setIsShowMobileNav(false)}
+        />
       </div>
     </header>
   );

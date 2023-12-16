@@ -1,9 +1,25 @@
 import products from "./data/products";
 
-export const getProductsByCategory = async ({ category, pageSize = 4 }) => {
+export const getProductsByCategory = async ({
+  category,
+  keyWord,
+  pageSize = 4,
+}) => {
   return new Promise((resolve) => {
     if (category === "all") {
-      resolve(products);
+      debugger
+      if (!keyWord) {
+        resolve(products);
+      } else {
+        const results = products.filter((p) => {
+          return (
+            p.name.toLowerCase().includes(keyWord.toLowerCase()) ||
+            p.category.toLowerCase().includes(keyWord.toLowerCase()) ||
+            p.shortDescription.toLowerCase().includes(keyWord.toLowerCase())
+          );
+        });
+        resolve(results);
+      }
     }
     const items = products.filter((product) => product.category === category);
     resolve(items.slice(0, pageSize));

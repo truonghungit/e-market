@@ -14,14 +14,17 @@
   color: black;
 }
 
+.nav-item > span,
 .nav-item > a {
   color: rgba(255, 255, 255, 0.8);
 }
 
+.nav-item > span:hover
 .nav-item > a:hover {
   color: #fff;
 }
 
+.nav-item > span.active,
 .nav-item a.active {
   color: #fff;
 }

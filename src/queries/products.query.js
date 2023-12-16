@@ -6,10 +6,10 @@ import {
   getProductDetail,
 } from "../repositories/products.repository";
 
-export const useGetProductsByCategory = ({ category, pageSize }) => {
+export const useGetProductsByCategory = ({ category, keyWord, pageSize }) => {
   return useQuery({
     queryKey: ["products", category, pageSize],
-    queryFn: () => getProductsByCategory({ category, pageSize }),
+    queryFn: () => getProductsByCategory({ category, keyWord, pageSize }),
   });
 };
 
