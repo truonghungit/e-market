@@ -7,7 +7,6 @@ export const getProductsByCategory = async ({
 }) => {
   return new Promise((resolve) => {
     if (category === "all") {
-      debugger
       if (!keyWord) {
         resolve(products);
       } else {

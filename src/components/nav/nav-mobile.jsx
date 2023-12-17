@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -20,6 +20,19 @@ const NavItem = ({ to, text, onClick }) => {
 export const NavMobile = ({ show, onClose }) => {
   const [open, setOpen] = useState(false);
   const [collapse, setCollapse] = useState(true);
+  const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    navigate(`${rootPath}/shop?s=${keyword}`);
+    handleClose();
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.code === "Enter") {
+      handleSearch();
+    }
+  };
 
   useEffect(() => {
     setOpen(show);
@@ -86,6 +99,9 @@ export const NavMobile = ({ show, onClose }) => {
                         type="search"
                         className="search-input"
                         placeholder="Tìm kiếm..."
+                        value={keyword}
+                        onChange={(event) => setKeyword(event.target.value)}
+                        onKeyDown={handleKeyDown}
                       />
 
                       <button

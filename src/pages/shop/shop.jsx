@@ -33,7 +33,7 @@ export const ShopPage = () => {
 
   const { addProduct } = useShoppingCart();
 
-  const { data: products } = useGetProductsByCategory({
+  const { data: products, refetch } = useGetProductsByCategory({
     category: category ?? "all",
     keyWord,
     pageSize: 4,
@@ -49,6 +49,10 @@ export const ShopPage = () => {
       setMaxPrice(max);
     }
   }, [products]);
+
+  useEffect(() => {
+    refetch();
+  }, [keyWord, refetch])
 
   const [selectedFilter, setSelectedFilter] = useState();
 

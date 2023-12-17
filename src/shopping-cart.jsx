@@ -34,7 +34,6 @@ export const ShoppingCartProvider = ({ children }) => {
   };
 
   const removeProduct = ({ id }) => {
-    debugger
     const cart = shoppingCart.filter((item) => item.id !== id);
 
     const totalAmount = calculateTotalAmount(cart);
